@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import Navigation from './components/navigation'
-import { Link } from 'react-router-dom'
+import Navigation from './components/Navigation'
+import Home from './components/Home'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,6 +10,7 @@ function App() {
   return (
     <div>
       <Navigation />
+      <Home />
     </div>
     
   )
