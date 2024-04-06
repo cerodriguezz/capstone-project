@@ -7,14 +7,14 @@ export async function FetchProducts (){
 
 }
 
-export async function SingleProducts () {
-    fetch("https://fakestoreapi.com/products/1")
-        .then((res) => res.json())
-        .then((json) => console.log(json));
+export async function FetchSingleProduct (id) {
+   return fetch(`https://fakestoreapi.com/products/${id}`)
+        .then((res) => res.json());
+
 }
 
 export async function NewProduct () {
-    fetch("https://fakestoreapi.com/products", {
+    return fetch("https://fakestoreapi.com/products", {
   method: "POST",
   body: JSON.stringify({
     title: "Vinyl",
@@ -25,18 +25,17 @@ export async function NewProduct () {
   }),
 })
   .then((res) => res.json())
-  .then((json) => console.log(json));
+
 }
 
-export async function Carts () {
-fetch("https://fakestoreapi.com/carts/user/1")
+export async function Cart (id) {
+return fetch(`https://fakestoreapi.com/carts/user/${id}`)
     .then((res) => res.json())
-    .then((json) => console.log(json));
 
 }
 
-export async function Users () {
-  fetch ('https://fakestoreapi.com/users',{
+export async function FetchUsers () {
+  return fetch ('https://fakestoreapi.com/users',{
     method:"POST",
     body:JSON.stringify(
         {
@@ -62,6 +61,26 @@ export async function Users () {
     )
 })
     .then(res=>res.json())
-    .then(json=>console.log(json))
+
     
+}
+
+export async function Login () {
+  return fetch('https://fakestoreapi.com/auth/login',{
+            method:'POST',
+            body:JSON.stringify({
+                username: "mor_2314",
+                password: "83r5^_"
+            })
+        })
+            .then(res=>res.json())
+
+}
+
+export async function Delete () {
+  return fetch('https://fakestoreapi.com/carts/6',{
+            method:"DELETE"
+        })
+            .then(res=>res.json())
+            
 }

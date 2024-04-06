@@ -1,10 +1,13 @@
 import { useEffect,useState } from "react";
 import { FetchProducts } from "../api";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 export default function Home () {
     const [products, setProducts] = useState([]);
+    const Navigate = useNavigate();
     useEffect(() => {
         async function fetchdata () {
             const data = await FetchProducts();
@@ -24,7 +27,9 @@ export default function Home () {
                         <ul key={product.id}>
                         <li>{product.title}</li>
                         <li>{product.price}</li>
-                        <li>{product.image}</li>
+                        <li><img src={product.image} alt={product.image} /> </li>
+                        <li><button onClick={()=> Navigate(`products/${product.id}`)}>Details</button></li>
+
                     </ul>
                     )
                 }
