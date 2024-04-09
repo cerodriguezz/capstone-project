@@ -34,44 +34,20 @@ return fetch(`https://fakestoreapi.com/carts/user/${id}`)
 
 }
 
-export async function FetchUsers () {
+export async function CreateUser (details) {
   return fetch ('https://fakestoreapi.com/users',{
     method:"POST",
-    body:JSON.stringify(
-        {
-            email:'John@gmail.com',
-            username:'johnd',
-            password:'m38rmF$',
-            name:{
-                firstname:'John',
-                lastname:'Doe'
-            },
-            address:{
-                city:'kilcoole',
-                street:'7835 new road',
-                number:3,
-                zipcode:'12926-3874',
-                geolocation:{
-                    lat:'-37.3159',
-                    long:'81.1496'
-                }
-            },
-            phone:'1-570-236-7033'
-        }
-    )
+    body:JSON.stringify(details)
 })
     .then(res=>res.json())
 
     
 }
 
-export async function Login () {
+export async function CreateLogin (details) {
   return fetch('https://fakestoreapi.com/auth/login',{
-            method:'POST',
-            body:JSON.stringify({
-                username: "mor_2314",
-                password: "83r5^_"
-            })
+            method:"POST",
+            body:JSON.stringify(details)
         })
             .then(res=>res.json())
 
