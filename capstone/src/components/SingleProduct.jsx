@@ -1,4 +1,4 @@
-import { FetchSingleProduct } from "../api";
+import { FetchSingleProduct, Cart, User} from "../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -11,13 +11,39 @@ export default function SingleProduct () {
             console.log(data);
             setProduct(data);
 
-            // console.log(data);
 
         }
             fetchdata();
-    }, [id]);
+    }, []);
 
-    return (
+    async function handleSubmit(){
+        async function getUser(){
+            const me = await User(token);
+            return me;
+            }
+            const me =await getUser(id);
+            console.log(me);
+          fetch(`https://fakestoreapi.com/carts/user/${id}`, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+              qty: 1
+            })
+          }).then(response => response.json())
+            .then(result => {
+              alert('You successfully added product to your cart: '+ product.name);
+            })
+            .catch(console.error);
+
+    } 
+
+console.log(User.id)
+
+
+        return(
         <div>
             {product&&(
                 <ul>
@@ -25,10 +51,14 @@ export default function SingleProduct () {
                     <li>Price: {product.price}</li>
                     <li>Description: {product.description}</li>
                     <li><img src={product.image} alt={product.image}/></li>
+                    {/* <li><button onClick={() => handleSubmit(`${SingleProduct.id}/${Cart.id}/${User.id}`)}>Add to cart</button></li> */}
+                    <li><button onClick={handleSubmit}>add to cart</button></li>
                 </ul>
             )}
         </div>
-    )
+        )
 
 }
+
+
 

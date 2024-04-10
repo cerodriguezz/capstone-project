@@ -7,6 +7,16 @@ export default function Login() {
         password: '',
     });
 
+    async function CreateLogin(data) {
+        return fetch('https://fakestoreapi.com/auth/login', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 

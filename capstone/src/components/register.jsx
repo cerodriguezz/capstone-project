@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CreateUser } from "../api";
+import { json } from "react-router";
 
 
 export default function Register () {
@@ -14,6 +15,15 @@ export default function Register () {
       }
     });
     // Function to handle form submission
+    async function CreateUser(data) {
+        return fetch('https://fakestoreapi.com/users',{
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+    }
     const handleSubmit = async (event) => {
       event.preventDefault();
       // Make API call

@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react";
-import { FetchProducts } from "../api";
+import { FetchProducts, Cart } from "../api";
 import { useNavigate } from "react-router-dom";
 
 
@@ -16,6 +16,8 @@ export default function Home () {
             fetchdata();
 
     }, []);
+
+
 
     return (
         <div>

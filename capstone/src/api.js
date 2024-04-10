@@ -34,6 +34,8 @@ return fetch(`https://fakestoreapi.com/carts/user/${id}`)
 
 }
 
+
+
 export async function CreateUser (details) {
   return fetch ('https://fakestoreapi.com/users',{
     method:"POST",
@@ -59,4 +61,10 @@ export async function Delete () {
         })
             .then(res=>res.json())
             
+}
+
+export async function User (id) {
+  return fetch(`https://fakestoreapi.com/users/${id}`)
+  .then(res=>res.json())
+  
 }
