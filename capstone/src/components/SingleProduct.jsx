@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function SingleProduct () {
+    const [token, setToken] = useState([]);
     const [product, setProduct] = useState([]);
     const {id} = useParams();
+
     useEffect(() =>{
         async function fetchdata () {
             const data = await FetchSingleProduct(id);
@@ -40,7 +42,7 @@ export default function SingleProduct () {
 
     } 
 
-console.log(User.id)
+
 
 
         return(

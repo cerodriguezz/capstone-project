@@ -21,7 +21,7 @@ export default function Home () {
 
     return (
         <div>
-            <h1>Vinyls</h1>
+            <h1>Shop!</h1>
             
                 {
                 products.map((product) => {
